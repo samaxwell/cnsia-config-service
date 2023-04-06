@@ -7,10 +7,13 @@ server:
     threads:
       max: 50
       min-spare: 5
+  shutdown: graceful
 
 spring:
   application:
     name: config-service
+  lifecycle:
+    timeout-per-shutdown-phase: 15s # defines a 15-second grace period for requests after SIGTERM
   cloud:
     config:
       server:
